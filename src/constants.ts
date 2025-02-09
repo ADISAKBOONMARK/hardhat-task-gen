@@ -15,7 +15,7 @@ export const OPTIONAL_PARAM = {
 };
 
 export const DEFAULT_CONFIG: TaskGenConfig = {
-  path: "./task-gen",
+  path: "./tasks-generated",
   clear: true,
   runOnCompile: true,
 };
