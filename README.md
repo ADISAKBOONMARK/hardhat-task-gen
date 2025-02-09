@@ -22,12 +22,12 @@ npm install --save-dev @adisakboonmark/hardhat-task-gen
 
 1. Add the plugin to your Hardhat config (`hardhat.config.ts` or `hardhat.config.js`):
 
-```js
-require("@adisakboonmark/hardhat-task-gen");
-```
-
 ```ts
 import "@adisakboonmark/hardhat-task-gen";
+```
+
+```js
+require("@adisakboonmark/hardhat-task-gen");
 ```
 
 2. Run the task generation command:
@@ -75,7 +75,7 @@ You can customize the task generation by modifying your Hardhat config:
 ```ts
 module.exports = {
   taskGen: {
-    path: "./tasks/generated", // Specify the output path for generated tasks (optional)
+    outPath: "./tasks-generated", // Specify the output path for generated tasks (optional)
     clear: true, // Clear existing tasks before generating new ones (optional)
     runOnCompile: false, // Generate tasks automatically on each compile (optional)
     prefix: "custom-prefix", // Set a custom task prefix (optional)
