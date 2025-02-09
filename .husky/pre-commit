@@ -1,0 +1,3 @@
+yarn sort:pack
+yarn lint
+yarn lint:fix

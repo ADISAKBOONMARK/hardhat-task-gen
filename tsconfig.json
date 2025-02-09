@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "strict": true,
+    "rootDirs": [
+      "./",
+    ],
+    "esModuleInterop": true,
+    "typeRoots": [
+      "@types"
+    ]
+  },
+  "exclude": [
+    "dist",
+    "node_modules"
+  ],
+  "include": [
+    "./src",
+    "./task",
+    "index.ts"
+  ]
+}
