@@ -98,11 +98,23 @@ npx hardhat Token:transfer:2    # Calls the overloaded transfer function
 
 ### 📜 Hardhat Contract Commands
 
-| Function Name      | Parameters | Command                                                                                         |
-| ------------------ | ---------- | ----------------------------------------------------------------------------------------------- |
-| DEFAULT_ADMIN_ROLE |            | `npx hardhat task-gen:MyToken:DEFAULT_ADMIN_ROLE --contract-address <contractAddress:optional>` |
-| DOMAIN_SEPARATOR   |            | `npx hardhat task-gen:MyToken:DOMAIN_SEPARATOR --contract-address <contractAddress:optional>`   |
-| name | | `npx hardhat task-gen:MyToken:name --contract-address <contractAddress:optional>` |
-| nonces | `owner` (address) | `npx hardhat task-gen:MyToken:nonces --contract-address <contractAddress:optional> --owner <owner>` |
-| pause | | `npx hardhat task-gen:MyToken:pause --contract-address <contractAddress:optional>` |
-| paused | | `npx hardhat task-gen:MyToken:paused --contract-address <contractAddress:optional>` |
+| Function Name      | Parameters        | Command                                                                                             |
+| ------------------ | ----------------- | --------------------------------------------------------------------------------------------------- |
+| DEFAULT_ADMIN_ROLE |                   | `npx hardhat task-gen:MyToken:DEFAULT_ADMIN_ROLE --contract-address <contractAddress:optional>`     |
+| DOMAIN_SEPARATOR   |                   | `npx hardhat task-gen:MyToken:DOMAIN_SEPARATOR --contract-address <contractAddress:optional>`       |
+| name               |                   | `npx hardhat task-gen:MyToken:name --contract-address <contractAddress:optional>`                   |
+| nonces             | `owner` (address) | `npx hardhat task-gen:MyToken:nonces --contract-address <contractAddress:optional> --owner <owner>` |
+| pause              |                   | `npx hardhat task-gen:MyToken:pause --contract-address <contractAddress:optional>`                  |
+| paused             |                   | `npx hardhat task-gen:MyToken:paused --contract-address <contractAddress:optional>`                 |
+
+## IMPORTANT
+
+### Invalid Casing in Parameter Names (#HH208)
+
+#### Problem:
+
+Parameters like `_type`, `_amount` use underscores, which violate camelCase formatting.
+
+#### Solution:
+
+Fix this issue by removing underscores from all parameter names to ensure camelCase compliance.
