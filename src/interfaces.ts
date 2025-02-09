@@ -1,5 +1,5 @@
 export interface TaskGenConfig {
-  path?: string;
+  outPath?: string;
   clear?: boolean;
   runOnCompile?: boolean;
   prefix?: string | undefined;

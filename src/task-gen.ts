@@ -157,7 +157,7 @@ export const genTask = async function ({
 
   if (generatedTasks.length > 0 && !runTask) {
     await fs.outputFile(
-      `${conf.path}/task-list.json`,
+      `${conf.outPath}/task-list.json`,
       JSON.stringify(generatedTasks, null, 2)
     );
   }
@@ -178,7 +178,7 @@ export const genTask = async function ({
       });
     });
 
-    await fs.outputFile(`${conf.path}/TASK_LIST.md`, readmeContent);
+    await fs.outputFile(`${conf.outPath}/TASK_LIST.md`, readmeContent);
   }
 
   if (generatedTasks.length > 0 && !runTask) {
@@ -196,6 +196,6 @@ export const genTask = async function ({
       cmds += "\n";
     });
 
-    await fs.outputFile(`${conf.path}/task-list.log`, cmds);
+    await fs.outputFile(`${conf.outPath}/task-list.log`, cmds);
   }
 };

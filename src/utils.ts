@@ -5,7 +5,8 @@ export const setDefaultConfig = (
   conf: TaskGenConfig | undefined
 ): TaskGenConfig => {
   return {
-    path: conf?.path !== undefined ? conf.path : DEFAULT_CONFIG.path,
+    outPath:
+      conf?.outPath !== undefined ? conf.outPath : DEFAULT_CONFIG.outPath,
     clear: conf?.clear !== undefined ? conf.clear : DEFAULT_CONFIG.clear,
     runOnCompile:
       conf?.runOnCompile !== undefined
