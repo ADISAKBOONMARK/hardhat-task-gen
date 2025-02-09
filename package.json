@@ -29,6 +29,7 @@
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.build.json",
     "commit": "npx git-cz",
+    "demo": "npx hardhat compile",
     "lint": "tslint --config tslint.json --project tsconfig.json",
     "lint:fix": "prettier --write 'src/**/*.{js,ts}' && prettier --write 'task/**/*.{js,ts}' && tslint --fix --config tslint.json --project tsconfig.json",
     "prepare": "husky",
@@ -44,10 +45,12 @@
     "hardhat": "^2.22.18"
   },
   "devDependencies": {
+    "@openzeppelin/contracts": "^5.2.0",
     "git-cz": "^4.9.0",
     "husky": "^9.1.7",
     "prettier": "2.0.5",
     "sort-package-json": "^2.14.0",
+    "ts-node": "^10.9.2",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.3.0",
