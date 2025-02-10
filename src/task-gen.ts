@@ -100,7 +100,7 @@ export const genTask = async function ({
 
                 const functionArgs = item.inputs.map(
                   (input: any, index: number) =>
-                    taskArgs[input.name || `param${index}`]
+                    taskArgs[input.name.replaceAll("_", "") || `param${index}`]
                 );
 
                 const txOptions: Record<string, any> = {};
