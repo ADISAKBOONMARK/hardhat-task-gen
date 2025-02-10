@@ -17,6 +17,7 @@
     "examples",
     "dist",
     "tests",
-    "jest.config.ts"
+    "jest.config.ts",
+    "hardhat.config.ts"
   ]
 }
