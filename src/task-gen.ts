@@ -54,31 +54,45 @@ export const genTask = async function ({
         if (item.type === "function") {
           const count = functionCount.get(item.name) || 0;
           functionCount.set(item.name, count + 1);
-          const uniqueTaskName =
-            count === 0
-              ? `${prefix}${contractName}:${item.name}`
-              : `${prefix}${contractName}:${item.name}:${count + 1}`;
+        }
+      });
+
+      const functionIndex = new Map();
+
+      contractABI.forEach((item: any) => {
+        if (item.type === "function") {
+          const isOverloadMethod = functionCount.get(item.name) > 1;
+
+          const index = functionIndex.get(item.name) || 0;
+
+          const uniqueTaskName = isOverloadMethod
+            ? `${prefix}${contractName}:${item.name}:${index + 1}`
+            : `${prefix}${contractName}:${item.name}`;
+
+          functionIndex.set(item.name, index + 1);
 
           if (runTask) {
             let newTask = task(
               uniqueTaskName,
-              `Calls ${item.name} function on ${contractName} with variant ${
-                count + 1
-              }`
+              `Calls ${item.name} function on ${contractName}`
             ).addOptionalParam(
               PARAM.contractAddress.name,
               PARAM.contractAddress.des
             );
 
+            const inputArgs: string[] = [];
+
             item.inputs.forEach((input: any, index: number) => {
               const paramName = input.name
                 ? input.name.replaceAll("_", "")
-                : `param${index}`;
+                : `param${index + 1}`;
 
               newTask = newTask.addParam(
                 paramName,
                 `Parameter of type ${input.type} (for tuples, provide a JSON string)`
               );
+
+              inputArgs.push(input.type);
             });
 
             if (item.stateMutability === "payable") {
@@ -100,7 +114,9 @@ export const genTask = async function ({
 
                 const functionArgs = item.inputs.map(
                   (input: any, index: number) =>
-                    taskArgs[input.name.replaceAll("_", "") || `param${index}`]
+                    taskArgs[
+                      input.name.replaceAll("_", "") || `param${index + 1}`
+                    ]
                 );
 
                 const txOptions: Record<string, any> = {};
@@ -111,12 +127,17 @@ export const genTask = async function ({
                   txOptions.value = taskArgs.payableValue;
                 }
 
-                const result = await contract[item.name](
-                  ...functionArgs,
-                  txOptions
-                );
+                for (let index = 0; index < functionArgs.length; index++) {
+                  functionArgs[index] = JSON.parse(functionArgs[index]);
+                }
+
+                const result = await contract[
+                  `${item.name}(${inputArgs.join()})`
+                ](...functionArgs, txOptions);
                 console.log(
-                  `✅ ${contractName}.${item.name} executed successfully!`
+                  `✅ ${contractName}.${
+                    item.name
+                  }${inputArgs.join()} executed successfully!`
                 );
                 console.log(`📊 Output:`, result);
               }
@@ -125,8 +146,9 @@ export const genTask = async function ({
 
           if (!runTask) {
             let taskCommand = `npx hardhat ${uniqueTaskName} --contract-address <contractAddress:optional>`;
-            item.inputs.forEach((input: any) => {
-              const inputName = input.name.replaceAll("_", "");
+            item.inputs.forEach((input: any, index: number) => {
+              const inputName =
+                input.name.replaceAll("_", "") || `param${index + 1}`;
               taskCommand += ` --${convertToKebabCase(
                 inputName
               )} <${inputName}>`;
@@ -163,9 +185,10 @@ export const genTask = async function ({
   }
 
   if (generatedTasks.length > 0 && !runTask) {
-    let readmeContent = "# 📜 Hardhat Contract Commands\n\n";
+    let readmeContent = "# 📜 Hardhat Contract Commands\n";
 
     generatedTasks.forEach((contract) => {
+      readmeContent += `\n`;
       readmeContent += `## ${contract.name}\n\n`;
       readmeContent += "| Function Name | Parameters | Command |\n";
       readmeContent += "|---------------|------------|---------|\n";
