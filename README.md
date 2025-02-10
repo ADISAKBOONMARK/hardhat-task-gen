@@ -24,22 +24,45 @@ npm install --save-dev @adisakboonmark/hardhat-task-gen
 
 ```ts
 import "@adisakboonmark/hardhat-task-gen";
-```
 
-```js
+// or
+
 require("@adisakboonmark/hardhat-task-gen");
 ```
 
 2. Run the task generation command:
 
 ```sh
-npx hardhat task-gen
+$ npx hardhat task-gen
 ```
 
 3. Use the generated tasks to interact with your contracts:
 
 ```sh
-npx hardhat MyContract:transfer --contract-address 0x123... --to 0xabc... --amount 1000
+$ npx hardhat task-gen:MyERC20:transfer --contract-address 0x123...456 --to 0xabc...123 --amount 1000
+
+$ npx hardhat task-gen:MyERC721:name --contract-address 0x123...456
+
+$ npx hardhat task-gen:MyERC1155:balanceOfBatch --contract-address 0x123...456 --accounts '["0xabc...123","0xabc...456"]' --ids '[0,1]'
+```
+
+4. Run the helper command:
+
+```sh
+$ npx hardhat task-gen:MyERC1155:balanceOfBatch --help
+Hardhat version 2.22.18
+
+Usage: hardhat [GLOBAL OPTIONS] task-gen:MyERC1155:balanceOfBatch --accounts <STRING> [--contract-address <STRING>] --ids <STRING>
+
+OPTIONS:
+
+  --accounts            Parameter of type address[] (for tuple and array, provide a JSON string)
+  --contract-address    The contract address
+  --ids                 Parameter of type uint256[] (for tuple and array, provide a JSON string)
+
+task-gen:MyERC1155:balanceOfBatch: Calls balanceOfBatch function on MyERC1155
+
+For global options help run: hardhat help
 ```
 
 ## Environment Variables
@@ -78,18 +101,18 @@ module.exports = {
     outPath: "./tasks-generated", // Specify the output path for generated tasks (optional)
     clear: true, // Clear existing tasks before generating new ones (optional)
     runOnCompile: false, // Generate tasks automatically on each compile (optional)
-    prefix: "custom-prefix", // Set a custom task prefix (optional)
+    prefix: "task-gen", // Set a custom task prefix (optional)
   },
 };
 ```
 
-## Example Generated Commands
+## Example Overloaded Commands
 
-For a contract named `Token` with overloaded `transfer` functions:
+For a contract named `MyERC1155` with overloaded functions `totalSupply()` and `totalSupply(uint256)`:
 
 ```sh
-npx hardhat Token:transfer      # Calls the basic transfer function
-npx hardhat Token:transfer:2    # Calls the overloaded transfer function
+npx hardhat task-gen:MyERC1155:transfer:1         # Calls the totalSupply() function
+npx hardhat task-gen:MyERC1155:transfer:2 --id 0  # Calls the totalSupply(uint256) function
 ```
 
 ## Example Commands Document
@@ -98,14 +121,23 @@ npx hardhat Token:transfer:2    # Calls the overloaded transfer function
 
 ### 📜 Hardhat Contract Commands
 
-| Function Name      | Parameters        | Command                                                                                             |
-| ------------------ | ----------------- | --------------------------------------------------------------------------------------------------- |
-| DEFAULT_ADMIN_ROLE |                   | `npx hardhat task-gen:MyToken:DEFAULT_ADMIN_ROLE --contract-address <contractAddress:optional>`     |
-| DOMAIN_SEPARATOR   |                   | `npx hardhat task-gen:MyToken:DOMAIN_SEPARATOR --contract-address <contractAddress:optional>`       |
-| name               |                   | `npx hardhat task-gen:MyToken:name --contract-address <contractAddress:optional>`                   |
-| nonces             | `owner` (address) | `npx hardhat task-gen:MyToken:nonces --contract-address <contractAddress:optional> --owner <owner>` |
-| pause              |                   | `npx hardhat task-gen:MyToken:pause --contract-address <contractAddress:optional>`                  |
-| paused             |                   | `npx hardhat task-gen:MyToken:paused --contract-address <contractAddress:optional>`                 |
+#### MyERC1155
+
+| Function Name         | Parameters                                                                                                          | Command                                                                                                                                                                  |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| DEFAULT_ADMIN_ROLE    |                                                                                                                     | `npx hardhat task-gen:MyERC1155:DEFAULT_ADMIN_ROLE --contract-address <contractAddress:optional>`                                                                        |
+| URI_SETTER_ROLE       |                                                                                                                     | `npx hardhat task-gen:MyERC1155:URI_SETTER_ROLE --contract-address <contractAddress:optional>`                                                                           |
+| burn                  | `account` (address), `id` (uint256), `value` (uint256)                                                              | `npx hardhat task-gen:MyERC1155:burn --contract-address <contractAddress:optional> --account <account> --id <id> --value <value>`                                        |
+| burnBatch             | `account` (address), `ids` (uint256[]), `values` (uint256[])                                                        | `npx hardhat task-gen:MyERC1155:burnBatch --contract-address <contractAddress:optional> --account <account> --ids <ids> --values <values>`                               |
+| exists                | `id` (uint256)                                                                                                      | `npx hardhat task-gen:MyERC1155:exists --contract-address <contractAddress:optional> --id <id>`                                                                          |
+| mint                  | `account` (address), `id` (uint256), `amount` (uint256), `data` (bytes)                                             | `npx hardhat task-gen:MyERC1155:mint --contract-address <contractAddress:optional> --account <account> --id <id> --amount <amount> --data <data>`                        |
+| mintBatch             | `to` (address), `ids` (uint256[]), `amounts` (uint256[]), `data` (bytes)                                            | `npx hardhat task-gen:MyERC1155:mintBatch --contract-address <contractAddress:optional> --to <to> --ids <ids> --amounts <amounts> --data <data>`                         |
+| safeBatchTransferFrom | `from` (address), `to` (address), `ids` (uint256[]), `values` (uint256[]), `data` (bytes)                           | `npx hardhat task-gen:MyERC1155:safeBatchTransferFrom --contract-address <contractAddress:optional> --from <from> --to <to> --ids <ids> --values <values> --data <data>` |
+| safeTransferFrom      | `from` (address), `to` (address), `id` (uint256), `value` (uint256), `data` (bytes)                                 | `npx hardhat task-gen:MyERC1155:safeTransferFrom --contract-address <contractAddress:optional> --from <from> --to <to> --id <id> --value <value> --data <data>`          |
+| supportsInterface     | `interfaceId` (bytes4)                                                                                              | `npx hardhat task-gen:MyERC1155:supportsInterface --contract-address <contractAddress:optional> --interface-id <interfaceId>`                                            |
+| totalSupply           |                                                                                                                     | `npx hardhat task-gen:MyERC1155:totalSupply:1 --contract-address <contractAddress:optional>`                                                                             |
+| totalSupply           | `id` (uint256)                                                                                                      | `npx hardhat task-gen:MyERC1155:totalSupply:2 --contract-address <contractAddress:optional> --id <id>`                                                                   |
+| uri                   | `` (uint256) | `npx hardhat task-gen:MyERC1155:uri --contract-address <contractAddress:optional> --param1 <param1>` |
 
 ## IMPORTANT
 
