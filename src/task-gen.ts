@@ -137,7 +137,7 @@ export const genTask = async function ({
                 console.log(
                   `✅ ${contractName}.${
                     item.name
-                  }${inputArgs.join()} executed successfully!`
+                  }(${inputArgs.join()}) executed successfully!`
                 );
                 console.log(`📊 Output:`, result);
               }
