@@ -8,13 +8,13 @@ import {ERC20Burnable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC2
 import {ERC20Pausable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
 import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
-contract MyToken is ERC20, ERC20Burnable, ERC20Pausable, AccessControl, ERC20Permit {
+contract MyERC20 is ERC20, ERC20Burnable, ERC20Pausable, AccessControl, ERC20Permit {
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
     constructor(address defaultAdmin, address pauser, address recipient, address minter)
-        ERC20("MyToken", "MTK")
-        ERC20Permit("MyToken")
+        ERC20("MyERC20", "MTK20")
+        ERC20Permit("MyERC20")
     {
         _grantRole(DEFAULT_ADMIN_ROLE, defaultAdmin);
         _grantRole(PAUSER_ROLE, pauser);

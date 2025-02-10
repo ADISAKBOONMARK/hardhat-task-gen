@@ -1,58 +1,26 @@
 [
   {
-    "name": "MyToken",
+    "name": "MyERC1155",
     "functions": [
       {
         "name": "DEFAULT_ADMIN_ROLE",
         "params": [],
-        "cmd": "npx hardhat task-gen:MyToken:DEFAULT_ADMIN_ROLE --contract-address <contractAddress:optional>"
-      },
-      {
-        "name": "DOMAIN_SEPARATOR",
-        "params": [],
-        "cmd": "npx hardhat task-gen:MyToken:DOMAIN_SEPARATOR --contract-address <contractAddress:optional>"
+        "cmd": "npx hardhat task-gen:MyERC1155:DEFAULT_ADMIN_ROLE --contract-address <contractAddress:optional>"
       },
       {
         "name": "MINTER_ROLE",
         "params": [],
-        "cmd": "npx hardhat task-gen:MyToken:MINTER_ROLE --contract-address <contractAddress:optional>"
+        "cmd": "npx hardhat task-gen:MyERC1155:MINTER_ROLE --contract-address <contractAddress:optional>"
       },
       {
         "name": "PAUSER_ROLE",
         "params": [],
-        "cmd": "npx hardhat task-gen:MyToken:PAUSER_ROLE --contract-address <contractAddress:optional>"
+        "cmd": "npx hardhat task-gen:MyERC1155:PAUSER_ROLE --contract-address <contractAddress:optional>"
       },
       {
-        "name": "allowance",
-        "params": [
-          {
-            "internalType": "address",
-            "name": "owner",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          }
-        ],
-        "cmd": "npx hardhat task-gen:MyToken:allowance --contract-address <contractAddress:optional> --owner <owner> --spender <spender>"
-      },
-      {
-        "name": "approve",
-        "params": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "value",
-            "type": "uint256"
-          }
-        ],
-        "cmd": "npx hardhat task-gen:MyToken:approve --contract-address <contractAddress:optional> --spender <spender> --value <value>"
+        "name": "URI_SETTER_ROLE",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC1155:URI_SETTER_ROLE --contract-address <contractAddress:optional>"
       },
       {
         "name": "balanceOf",
@@ -61,23 +29,33 @@
             "internalType": "address",
             "name": "account",
             "type": "address"
-          }
-        ],
-        "cmd": "npx hardhat task-gen:MyToken:balanceOf --contract-address <contractAddress:optional> --account <account>"
-      },
-      {
-        "name": "burn",
-        "params": [
+          },
           {
             "internalType": "uint256",
-            "name": "value",
+            "name": "id",
             "type": "uint256"
           }
         ],
-        "cmd": "npx hardhat task-gen:MyToken:burn --contract-address <contractAddress:optional> --value <value>"
+        "cmd": "npx hardhat task-gen:MyERC1155:balanceOf --contract-address <contractAddress:optional> --account <account> --id <id>"
       },
       {
-        "name": "burnFrom",
+        "name": "balanceOfBatch",
+        "params": [
+          {
+            "internalType": "address[]",
+            "name": "accounts",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "ids",
+            "type": "uint256[]"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:balanceOfBatch --contract-address <contractAddress:optional> --accounts <accounts> --ids <ids>"
+      },
+      {
+        "name": "burn",
         "params": [
           {
             "internalType": "address",
@@ -86,21 +64,48 @@
           },
           {
             "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
             "name": "value",
             "type": "uint256"
           }
         ],
-        "cmd": "npx hardhat task-gen:MyToken:burnFrom --contract-address <contractAddress:optional> --account <account> --value <value>"
+        "cmd": "npx hardhat task-gen:MyERC1155:burn --contract-address <contractAddress:optional> --account <account> --id <id> --value <value>"
       },
       {
-        "name": "decimals",
-        "params": [],
-        "cmd": "npx hardhat task-gen:MyToken:decimals --contract-address <contractAddress:optional>"
+        "name": "burnBatch",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "ids",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "values",
+            "type": "uint256[]"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:burnBatch --contract-address <contractAddress:optional> --account <account> --ids <ids> --values <values>"
       },
       {
-        "name": "eip712Domain",
-        "params": [],
-        "cmd": "npx hardhat task-gen:MyToken:eip712Domain --contract-address <contractAddress:optional>"
+        "name": "exists",
+        "params": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:exists --contract-address <contractAddress:optional> --id <id>"
       },
       {
         "name": "getRoleAdmin",
@@ -111,7 +116,7 @@
             "type": "bytes32"
           }
         ],
-        "cmd": "npx hardhat task-gen:MyToken:getRoleAdmin --contract-address <contractAddress:optional> --role <role>"
+        "cmd": "npx hardhat task-gen:MyERC1155:getRoleAdmin --contract-address <contractAddress:optional> --role <role>"
       },
       {
         "name": "grantRole",
@@ -127,7 +132,7 @@
             "type": "address"
           }
         ],
-        "cmd": "npx hardhat task-gen:MyToken:grantRole --contract-address <contractAddress:optional> --role <role> --account <account>"
+        "cmd": "npx hardhat task-gen:MyERC1155:grantRole --contract-address <contractAddress:optional> --role <role> --account <account>"
       },
       {
         "name": "hasRole",
@@ -143,7 +148,397 @@
             "type": "address"
           }
         ],
-        "cmd": "npx hardhat task-gen:MyToken:hasRole --contract-address <contractAddress:optional> --role <role> --account <account>"
+        "cmd": "npx hardhat task-gen:MyERC1155:hasRole --contract-address <contractAddress:optional> --role <role> --account <account>"
+      },
+      {
+        "name": "isApprovedForAll",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:isApprovedForAll --contract-address <contractAddress:optional> --account <account> --operator <operator>"
+      },
+      {
+        "name": "mint",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes",
+            "name": "data",
+            "type": "bytes"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:mint --contract-address <contractAddress:optional> --account <account> --id <id> --amount <amount> --data <data>"
+      },
+      {
+        "name": "mintBatch",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "ids",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "amounts",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "bytes",
+            "name": "data",
+            "type": "bytes"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:mintBatch --contract-address <contractAddress:optional> --to <to> --ids <ids> --amounts <amounts> --data <data>"
+      },
+      {
+        "name": "pause",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC1155:pause --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "paused",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC1155:paused --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "renounceRole",
+        "params": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "callerConfirmation",
+            "type": "address"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:renounceRole --contract-address <contractAddress:optional> --role <role> --caller-confirmation <callerConfirmation>"
+      },
+      {
+        "name": "revokeRole",
+        "params": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:revokeRole --contract-address <contractAddress:optional> --role <role> --account <account>"
+      },
+      {
+        "name": "safeBatchTransferFrom",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "ids",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "values",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "bytes",
+            "name": "data",
+            "type": "bytes"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:safeBatchTransferFrom --contract-address <contractAddress:optional> --from <from> --to <to> --ids <ids> --values <values> --data <data>"
+      },
+      {
+        "name": "safeTransferFrom",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes",
+            "name": "data",
+            "type": "bytes"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:safeTransferFrom --contract-address <contractAddress:optional> --from <from> --to <to> --id <id> --value <value> --data <data>"
+      },
+      {
+        "name": "setApprovalForAll",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "approved",
+            "type": "bool"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:setApprovalForAll --contract-address <contractAddress:optional> --operator <operator> --approved <approved>"
+      },
+      {
+        "name": "setURI",
+        "params": [
+          {
+            "internalType": "string",
+            "name": "newuri",
+            "type": "string"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:setURI --contract-address <contractAddress:optional> --newuri <newuri>"
+      },
+      {
+        "name": "supportsInterface",
+        "params": [
+          {
+            "internalType": "bytes4",
+            "name": "interfaceId",
+            "type": "bytes4"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:supportsInterface --contract-address <contractAddress:optional> --interface-id <interfaceId>"
+      },
+      {
+        "name": "totalSupply",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC1155:totalSupply:1 --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "totalSupply",
+        "params": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:totalSupply:2 --contract-address <contractAddress:optional> --id <id>"
+      },
+      {
+        "name": "unpause",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC1155:unpause --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "uri",
+        "params": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC1155:uri --contract-address <contractAddress:optional> --param1 <param1>"
+      }
+    ]
+  },
+  {
+    "name": "MyERC20",
+    "functions": [
+      {
+        "name": "DEFAULT_ADMIN_ROLE",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC20:DEFAULT_ADMIN_ROLE --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "DOMAIN_SEPARATOR",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC20:DOMAIN_SEPARATOR --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "MINTER_ROLE",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC20:MINTER_ROLE --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "PAUSER_ROLE",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC20:PAUSER_ROLE --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "allowance",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC20:allowance --contract-address <contractAddress:optional> --owner <owner> --spender <spender>"
+      },
+      {
+        "name": "approve",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC20:approve --contract-address <contractAddress:optional> --spender <spender> --value <value>"
+      },
+      {
+        "name": "balanceOf",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC20:balanceOf --contract-address <contractAddress:optional> --account <account>"
+      },
+      {
+        "name": "burn",
+        "params": [
+          {
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC20:burn --contract-address <contractAddress:optional> --value <value>"
+      },
+      {
+        "name": "burnFrom",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC20:burnFrom --contract-address <contractAddress:optional> --account <account> --value <value>"
+      },
+      {
+        "name": "decimals",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC20:decimals --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "eip712Domain",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC20:eip712Domain --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "getRoleAdmin",
+        "params": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC20:getRoleAdmin --contract-address <contractAddress:optional> --role <role>"
+      },
+      {
+        "name": "grantRole",
+        "params": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC20:grantRole --contract-address <contractAddress:optional> --role <role> --account <account>"
+      },
+      {
+        "name": "hasRole",
+        "params": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC20:hasRole --contract-address <contractAddress:optional> --role <role> --account <account>"
       },
       {
         "name": "mint",
@@ -159,12 +554,12 @@
             "type": "uint256"
           }
         ],
-        "cmd": "npx hardhat task-gen:MyToken:mint --contract-address <contractAddress:optional> --to <to> --amount <amount>"
+        "cmd": "npx hardhat task-gen:MyERC20:mint --contract-address <contractAddress:optional> --to <to> --amount <amount>"
       },
       {
         "name": "name",
         "params": [],
-        "cmd": "npx hardhat task-gen:MyToken:name --contract-address <contractAddress:optional>"
+        "cmd": "npx hardhat task-gen:MyERC20:name --contract-address <contractAddress:optional>"
       },
       {
         "name": "nonces",
@@ -175,17 +570,17 @@
             "type": "address"
           }
         ],
-        "cmd": "npx hardhat task-gen:MyToken:nonces --contract-address <contractAddress:optional> --owner <owner>"
+        "cmd": "npx hardhat task-gen:MyERC20:nonces --contract-address <contractAddress:optional> --owner <owner>"
       },
       {
         "name": "pause",
         "params": [],
-        "cmd": "npx hardhat task-gen:MyToken:pause --contract-address <contractAddress:optional>"
+        "cmd": "npx hardhat task-gen:MyERC20:pause --contract-address <contractAddress:optional>"
       },
       {
         "name": "paused",
         "params": [],
-        "cmd": "npx hardhat task-gen:MyToken:paused --contract-address <contractAddress:optional>"
+        "cmd": "npx hardhat task-gen:MyERC20:paused --contract-address <contractAddress:optional>"
       },
       {
         "name": "permit",
@@ -226,7 +621,7 @@
             "type": "bytes32"
           }
         ],
-        "cmd": "npx hardhat task-gen:MyToken:permit --contract-address <contractAddress:optional> --owner <owner> --spender <spender> --value <value> --deadline <deadline> --v <v> --r <r> --s <s>"
+        "cmd": "npx hardhat task-gen:MyERC20:permit --contract-address <contractAddress:optional> --owner <owner> --spender <spender> --value <value> --deadline <deadline> --v <v> --r <r> --s <s>"
       },
       {
         "name": "renounceRole",
@@ -242,7 +637,7 @@
             "type": "address"
           }
         ],
-        "cmd": "npx hardhat task-gen:MyToken:renounceRole --contract-address <contractAddress:optional> --role <role> --caller-confirmation <callerConfirmation>"
+        "cmd": "npx hardhat task-gen:MyERC20:renounceRole --contract-address <contractAddress:optional> --role <role> --caller-confirmation <callerConfirmation>"
       },
       {
         "name": "revokeRole",
@@ -258,7 +653,7 @@
             "type": "address"
           }
         ],
-        "cmd": "npx hardhat task-gen:MyToken:revokeRole --contract-address <contractAddress:optional> --role <role> --account <account>"
+        "cmd": "npx hardhat task-gen:MyERC20:revokeRole --contract-address <contractAddress:optional> --role <role> --account <account>"
       },
       {
         "name": "supportsInterface",
@@ -269,17 +664,17 @@
             "type": "bytes4"
           }
         ],
-        "cmd": "npx hardhat task-gen:MyToken:supportsInterface --contract-address <contractAddress:optional> --interface-id <interfaceId>"
+        "cmd": "npx hardhat task-gen:MyERC20:supportsInterface --contract-address <contractAddress:optional> --interface-id <interfaceId>"
       },
       {
         "name": "symbol",
         "params": [],
-        "cmd": "npx hardhat task-gen:MyToken:symbol --contract-address <contractAddress:optional>"
+        "cmd": "npx hardhat task-gen:MyERC20:symbol --contract-address <contractAddress:optional>"
       },
       {
         "name": "totalSupply",
         "params": [],
-        "cmd": "npx hardhat task-gen:MyToken:totalSupply --contract-address <contractAddress:optional>"
+        "cmd": "npx hardhat task-gen:MyERC20:totalSupply --contract-address <contractAddress:optional>"
       },
       {
         "name": "transfer",
@@ -295,7 +690,7 @@
             "type": "uint256"
           }
         ],
-        "cmd": "npx hardhat task-gen:MyToken:transfer --contract-address <contractAddress:optional> --to <to> --value <value>"
+        "cmd": "npx hardhat task-gen:MyERC20:transfer --contract-address <contractAddress:optional> --to <to> --value <value>"
       },
       {
         "name": "transferFrom",
@@ -316,12 +711,362 @@
             "type": "uint256"
           }
         ],
-        "cmd": "npx hardhat task-gen:MyToken:transferFrom --contract-address <contractAddress:optional> --from <from> --to <to> --value <value>"
+        "cmd": "npx hardhat task-gen:MyERC20:transferFrom --contract-address <contractAddress:optional> --from <from> --to <to> --value <value>"
       },
       {
         "name": "unpause",
         "params": [],
-        "cmd": "npx hardhat task-gen:MyToken:unpause --contract-address <contractAddress:optional>"
+        "cmd": "npx hardhat task-gen:MyERC20:unpause --contract-address <contractAddress:optional>"
+      }
+    ]
+  },
+  {
+    "name": "MyERC721",
+    "functions": [
+      {
+        "name": "DEFAULT_ADMIN_ROLE",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC721:DEFAULT_ADMIN_ROLE --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "MINTER_ROLE",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC721:MINTER_ROLE --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "PAUSER_ROLE",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC721:PAUSER_ROLE --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "approve",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:approve --contract-address <contractAddress:optional> --to <to> --token-id <tokenId>"
+      },
+      {
+        "name": "balanceOf",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:balanceOf --contract-address <contractAddress:optional> --owner <owner>"
+      },
+      {
+        "name": "burn",
+        "params": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:burn --contract-address <contractAddress:optional> --token-id <tokenId>"
+      },
+      {
+        "name": "getApproved",
+        "params": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:getApproved --contract-address <contractAddress:optional> --token-id <tokenId>"
+      },
+      {
+        "name": "getRoleAdmin",
+        "params": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:getRoleAdmin --contract-address <contractAddress:optional> --role <role>"
+      },
+      {
+        "name": "grantRole",
+        "params": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:grantRole --contract-address <contractAddress:optional> --role <role> --account <account>"
+      },
+      {
+        "name": "hasRole",
+        "params": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:hasRole --contract-address <contractAddress:optional> --role <role> --account <account>"
+      },
+      {
+        "name": "isApprovedForAll",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:isApprovedForAll --contract-address <contractAddress:optional> --owner <owner> --operator <operator>"
+      },
+      {
+        "name": "name",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC721:name --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "ownerOf",
+        "params": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:ownerOf --contract-address <contractAddress:optional> --token-id <tokenId>"
+      },
+      {
+        "name": "pause",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC721:pause --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "paused",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC721:paused --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "renounceRole",
+        "params": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "callerConfirmation",
+            "type": "address"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:renounceRole --contract-address <contractAddress:optional> --role <role> --caller-confirmation <callerConfirmation>"
+      },
+      {
+        "name": "revokeRole",
+        "params": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:revokeRole --contract-address <contractAddress:optional> --role <role> --account <account>"
+      },
+      {
+        "name": "safeMint",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "uri",
+            "type": "string"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:safeMint --contract-address <contractAddress:optional> --to <to> --uri <uri>"
+      },
+      {
+        "name": "safeTransferFrom",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:safeTransferFrom:1 --contract-address <contractAddress:optional> --from <from> --to <to> --token-id <tokenId>"
+      },
+      {
+        "name": "safeTransferFrom",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes",
+            "name": "data",
+            "type": "bytes"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:safeTransferFrom:2 --contract-address <contractAddress:optional> --from <from> --to <to> --token-id <tokenId> --data <data>"
+      },
+      {
+        "name": "setApprovalForAll",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "approved",
+            "type": "bool"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:setApprovalForAll --contract-address <contractAddress:optional> --operator <operator> --approved <approved>"
+      },
+      {
+        "name": "supportsInterface",
+        "params": [
+          {
+            "internalType": "bytes4",
+            "name": "interfaceId",
+            "type": "bytes4"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:supportsInterface --contract-address <contractAddress:optional> --interface-id <interfaceId>"
+      },
+      {
+        "name": "symbol",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC721:symbol --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "tokenByIndex",
+        "params": [
+          {
+            "internalType": "uint256",
+            "name": "index",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:tokenByIndex --contract-address <contractAddress:optional> --index <index>"
+      },
+      {
+        "name": "tokenOfOwnerByIndex",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "index",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:tokenOfOwnerByIndex --contract-address <contractAddress:optional> --owner <owner> --index <index>"
+      },
+      {
+        "name": "tokenURI",
+        "params": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:tokenURI --contract-address <contractAddress:optional> --token-id <tokenId>"
+      },
+      {
+        "name": "totalSupply",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC721:totalSupply --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "transferFrom",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:MyERC721:transferFrom --contract-address <contractAddress:optional> --from <from> --to <to> --token-id <tokenId>"
+      },
+      {
+        "name": "unpause",
+        "params": [],
+        "cmd": "npx hardhat task-gen:MyERC721:unpause --contract-address <contractAddress:optional>"
       }
     ]
   }
