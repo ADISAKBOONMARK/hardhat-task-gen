@@ -121,23 +121,20 @@ npx hardhat task-gen:MyERC1155:transfer:2 --id 0  # Calls the totalSupply(uint25
 
 ### 📜 Hardhat Contract Commands
 
-#### MyERC1155
+#### AwesomeCat
 
-| Function Name         | Parameters                                                                                                          | Command                                                                                                                                                                  |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| DEFAULT_ADMIN_ROLE    |                                                                                                                     | `npx hardhat task-gen:MyERC1155:DEFAULT_ADMIN_ROLE --contract-address <contractAddress:optional>`                                                                        |
-| URI_SETTER_ROLE       |                                                                                                                     | `npx hardhat task-gen:MyERC1155:URI_SETTER_ROLE --contract-address <contractAddress:optional>`                                                                           |
-| burn                  | `account` (address), `id` (uint256), `value` (uint256)                                                              | `npx hardhat task-gen:MyERC1155:burn --contract-address <contractAddress:optional> --account <account> --id <id> --value <value>`                                        |
-| burnBatch             | `account` (address), `ids` (uint256[]), `values` (uint256[])                                                        | `npx hardhat task-gen:MyERC1155:burnBatch --contract-address <contractAddress:optional> --account <account> --ids <ids> --values <values>`                               |
-| exists                | `id` (uint256)                                                                                                      | `npx hardhat task-gen:MyERC1155:exists --contract-address <contractAddress:optional> --id <id>`                                                                          |
-| mint                  | `account` (address), `id` (uint256), `amount` (uint256), `data` (bytes)                                             | `npx hardhat task-gen:MyERC1155:mint --contract-address <contractAddress:optional> --account <account> --id <id> --amount <amount> --data <data>`                        |
-| mintBatch             | `to` (address), `ids` (uint256[]), `amounts` (uint256[]), `data` (bytes)                                            | `npx hardhat task-gen:MyERC1155:mintBatch --contract-address <contractAddress:optional> --to <to> --ids <ids> --amounts <amounts> --data <data>`                         |
-| safeBatchTransferFrom | `from` (address), `to` (address), `ids` (uint256[]), `values` (uint256[]), `data` (bytes)                           | `npx hardhat task-gen:MyERC1155:safeBatchTransferFrom --contract-address <contractAddress:optional> --from <from> --to <to> --ids <ids> --values <values> --data <data>` |
-| safeTransferFrom      | `from` (address), `to` (address), `id` (uint256), `value` (uint256), `data` (bytes)                                 | `npx hardhat task-gen:MyERC1155:safeTransferFrom --contract-address <contractAddress:optional> --from <from> --to <to> --id <id> --value <value> --data <data>`          |
-| supportsInterface     | `interfaceId` (bytes4)                                                                                              | `npx hardhat task-gen:MyERC1155:supportsInterface --contract-address <contractAddress:optional> --interface-id <interfaceId>`                                            |
-| totalSupply           |                                                                                                                     | `npx hardhat task-gen:MyERC1155:totalSupply:1 --contract-address <contractAddress:optional>`                                                                             |
-| totalSupply           | `id` (uint256)                                                                                                      | `npx hardhat task-gen:MyERC1155:totalSupply:2 --contract-address <contractAddress:optional> --id <id>`                                                                   |
-| uri                   | `` (uint256) | `npx hardhat task-gen:MyERC1155:uri --contract-address <contractAddress:optional> --param1 <param1>` |
+| Function Name | Parameters | Outputs | Command |
+|---------------|------------|---------|---------|
+| breed | `catA` tuple[`id` (uint256),`gender` (uint8)], `catB` tuple[`id` (uint256),`gender` (uint8)] | `newCat` tuple[`id` (uint256),`gender` (uint8)] | `npx hardhat task-gen:AwesomeCat:breed:1 --contract-address <contractAddress:optional> --cat-a <catA> --cat-b <catB>` |
+| breed | `catIdA` (uint256), `catIdB` (uint256) | `newCat` tuple[`id` (uint256),`gender` (uint8)] | `npx hardhat task-gen:AwesomeCat:breed:2 --contract-address <contractAddress:optional> --cat-id-a <catIdA> --cat-id-b <catIdB>` |
+| breedBatch | `catIdsA` (uint256[]), `catIdsB` (uint256[]) | `newCats` tuple[[`id` (uint256),`gender` (uint8)]] | `npx hardhat task-gen:AwesomeCat:breedBatch:1 --contract-address <contractAddress:optional> --cat-ids-a <catIdsA> --cat-ids-b <catIdsB>` |
+| breedBatch | `catsA` tuple[[`id` (uint256),`gender` (uint8)]], `catsB` tuple[[`id` (uint256),`gender` (uint8)]] | `newCats` tuple[[`id` (uint256),`gender` (uint8)]] | `npx hardhat task-gen:AwesomeCat:breedBatch:2 --contract-address <contractAddress:optional> --cats-a <catsA> --cats-b <catsB>` |
+| cats | `catId` (uint256) | `id` (uint256), `gender` (uint8) | `npx hardhat task-gen:AwesomeCat:cats --contract-address <contractAddress:optional> --cat-id <catId>` |
+| craftGender |  | `output1` (uint8) | `npx hardhat task-gen:AwesomeCat:craftGender --contract-address <contractAddress:optional>` |
+| exists | `catId` (uint256) | `output1` (bool) | `npx hardhat task-gen:AwesomeCat:exists --contract-address <contractAddress:optional> --cat-id <catId>` |
+| mintCat |  | `output1` tuple[`id` (uint256),`gender` (uint8)] | `npx hardhat task-gen:AwesomeCat:mintCat --contract-address <contractAddress:optional>` |
+| owners | `owner` (address) | `id` (uint256), `gender` (uint8) | `npx hardhat task-gen:AwesomeCat:owners --contract-address <contractAddress:optional> --owner <owner>` |
+| parents | `catId` (uint256) | `father` tuple[`id` (uint256),`gender` (uint8)], `mother` tuple[`id` (uint256),`gender` (uint8)] | `npx hardhat task-gen:AwesomeCat:parents --contract-address <contractAddress:optional> --cat-id <catId>` |
 
 ## IMPORTANT
 
