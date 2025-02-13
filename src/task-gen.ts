@@ -167,6 +167,7 @@ export const genTask = async function ({
             contractsMap.get(contractName).functions.push({
               name: item.name,
               params: item.inputs,
+              outputs: item.outputs,
               cmd: taskCommand,
             });
           }
@@ -190,14 +191,51 @@ export const genTask = async function ({
     generatedTasks.forEach((contract) => {
       readmeContent += `\n`;
       readmeContent += `## ${contract.name}\n\n`;
-      readmeContent += "| Function Name | Parameters | Command |\n";
-      readmeContent += "|---------------|------------|---------|\n";
+      readmeContent += "| Function Name | Parameters | Outputs | Command |\n";
+      readmeContent += "|---------------|------------|---------|---------|\n";
+
+      const mapParams = function (param: any, index: any) {
+        return param.type.search("tuple") < 0
+          ? `\`${param.name || `param${index + 1}`}\` (${param.type})`
+          : param.type === "tuple"
+          ? `\`${
+              param.name || `param${index + 1}`
+            }\` tuple[${param.components.map((param: any, index: any) =>
+              mapParams(param, index)
+            )}]`
+          : `\`${
+              param.name || `param${index + 1}`
+            }\` tuple[[${param.components.map((param: any, index: any) =>
+              mapParams(param, index)
+            )}]]`;
+      };
+
+      const mapOutputs = function (param: any, index: any) {
+        return param.type.search("tuple") < 0
+          ? `\`${param.name || `output${index + 1}`}\` (${param.type})`
+          : param.type === "tuple"
+          ? `\`${
+              param.name || `output${index + 1}`
+            }\` tuple[${param.components.map((param: any, index: any) =>
+              mapOutputs(param, index)
+            )}]`
+          : `\`${
+              param.name || `output${index + 1}`
+            }\` tuple[[${param.components.map((param: any, index: any) =>
+              mapOutputs(param, index)
+            )}]]`;
+      };
 
       contract.functions.forEach((func: any) => {
         const params = func.params
-          .map((param: any) => `\`${param.name}\` (${param.type})`)
+          .map((param: any, index: any) => mapParams(param, index))
           .join(", ");
-        readmeContent += `| ${func.name} | ${params} | \`${func.cmd}\` |\n`;
+
+        const outputs = func.outputs
+          .map((param: any, index: any) => mapOutputs(param, index))
+          .join(", ");
+
+        readmeContent += `| ${func.name} | ${params} | ${outputs} | \`${func.cmd}\` |\n`;
       });
     });
 
