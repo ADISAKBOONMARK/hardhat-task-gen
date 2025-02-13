@@ -1,5 +1,17 @@
 
 📜 Generated Hardhat Commands:
+AwesomeCat
+npx hardhat task-gen:AwesomeCat:breed:1 --contract-address <contractAddress:optional> --cat-a <catA> --cat-b <catB>
+npx hardhat task-gen:AwesomeCat:breed:2 --contract-address <contractAddress:optional> --cat-id-a <catIdA> --cat-id-b <catIdB>
+npx hardhat task-gen:AwesomeCat:breedBatch:1 --contract-address <contractAddress:optional> --cat-ids-a <catIdsA> --cat-ids-b <catIdsB>
+npx hardhat task-gen:AwesomeCat:breedBatch:2 --contract-address <contractAddress:optional> --cats-a <catsA> --cats-b <catsB>
+npx hardhat task-gen:AwesomeCat:cats --contract-address <contractAddress:optional> --cat-id <catId>
+npx hardhat task-gen:AwesomeCat:craftGender --contract-address <contractAddress:optional>
+npx hardhat task-gen:AwesomeCat:exists --contract-address <contractAddress:optional> --cat-id <catId>
+npx hardhat task-gen:AwesomeCat:mintCat --contract-address <contractAddress:optional>
+npx hardhat task-gen:AwesomeCat:owners --contract-address <contractAddress:optional> --owner <owner>
+npx hardhat task-gen:AwesomeCat:parents --contract-address <contractAddress:optional> --cat-id <catId>
+
 MyERC1155
 npx hardhat task-gen:MyERC1155:DEFAULT_ADMIN_ROLE --contract-address <contractAddress:optional>
 npx hardhat task-gen:MyERC1155:MINTER_ROLE --contract-address <contractAddress:optional>

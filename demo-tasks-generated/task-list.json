@@ -1,25 +1,393 @@
 [
   {
+    "name": "AwesomeCat",
+    "functions": [
+      {
+        "name": "breed",
+        "params": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AwesomeCat.Gender",
+                "name": "gender",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct AwesomeCat.Cat",
+            "name": "catA",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AwesomeCat.Gender",
+                "name": "gender",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct AwesomeCat.Cat",
+            "name": "catB",
+            "type": "tuple"
+          }
+        ],
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AwesomeCat.Gender",
+                "name": "gender",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct AwesomeCat.Cat",
+            "name": "newCat",
+            "type": "tuple"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:AwesomeCat:breed:1 --contract-address <contractAddress:optional> --cat-a <catA> --cat-b <catB>"
+      },
+      {
+        "name": "breed",
+        "params": [
+          {
+            "internalType": "uint256",
+            "name": "catIdA",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "catIdB",
+            "type": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AwesomeCat.Gender",
+                "name": "gender",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct AwesomeCat.Cat",
+            "name": "newCat",
+            "type": "tuple"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:AwesomeCat:breed:2 --contract-address <contractAddress:optional> --cat-id-a <catIdA> --cat-id-b <catIdB>"
+      },
+      {
+        "name": "breedBatch",
+        "params": [
+          {
+            "internalType": "uint256[]",
+            "name": "catIdsA",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "catIdsB",
+            "type": "uint256[]"
+          }
+        ],
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AwesomeCat.Gender",
+                "name": "gender",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct AwesomeCat.Cat[]",
+            "name": "newCats",
+            "type": "tuple[]"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:AwesomeCat:breedBatch:1 --contract-address <contractAddress:optional> --cat-ids-a <catIdsA> --cat-ids-b <catIdsB>"
+      },
+      {
+        "name": "breedBatch",
+        "params": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AwesomeCat.Gender",
+                "name": "gender",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct AwesomeCat.Cat[]",
+            "name": "catsA",
+            "type": "tuple[]"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AwesomeCat.Gender",
+                "name": "gender",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct AwesomeCat.Cat[]",
+            "name": "catsB",
+            "type": "tuple[]"
+          }
+        ],
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AwesomeCat.Gender",
+                "name": "gender",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct AwesomeCat.Cat[]",
+            "name": "newCats",
+            "type": "tuple[]"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:AwesomeCat:breedBatch:2 --contract-address <contractAddress:optional> --cats-a <catsA> --cats-b <catsB>"
+      },
+      {
+        "name": "cats",
+        "params": [
+          {
+            "internalType": "uint256",
+            "name": "catId",
+            "type": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum AwesomeCat.Gender",
+            "name": "gender",
+            "type": "uint8"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:AwesomeCat:cats --contract-address <contractAddress:optional> --cat-id <catId>"
+      },
+      {
+        "name": "craftGender",
+        "params": [],
+        "outputs": [
+          {
+            "internalType": "enum AwesomeCat.Gender",
+            "name": "",
+            "type": "uint8"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:AwesomeCat:craftGender --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "exists",
+        "params": [
+          {
+            "internalType": "uint256",
+            "name": "catId",
+            "type": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:AwesomeCat:exists --contract-address <contractAddress:optional> --cat-id <catId>"
+      },
+      {
+        "name": "mintCat",
+        "params": [],
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AwesomeCat.Gender",
+                "name": "gender",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct AwesomeCat.Cat",
+            "name": "",
+            "type": "tuple"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:AwesomeCat:mintCat --contract-address <contractAddress:optional>"
+      },
+      {
+        "name": "owners",
+        "params": [
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum AwesomeCat.Gender",
+            "name": "gender",
+            "type": "uint8"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:AwesomeCat:owners --contract-address <contractAddress:optional> --owner <owner>"
+      },
+      {
+        "name": "parents",
+        "params": [
+          {
+            "internalType": "uint256",
+            "name": "catId",
+            "type": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AwesomeCat.Gender",
+                "name": "gender",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct AwesomeCat.Cat",
+            "name": "father",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum AwesomeCat.Gender",
+                "name": "gender",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct AwesomeCat.Cat",
+            "name": "mother",
+            "type": "tuple"
+          }
+        ],
+        "cmd": "npx hardhat task-gen:AwesomeCat:parents --contract-address <contractAddress:optional> --cat-id <catId>"
+      }
+    ]
+  },
+  {
     "name": "MyERC1155",
     "functions": [
       {
         "name": "DEFAULT_ADMIN_ROLE",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC1155:DEFAULT_ADMIN_ROLE --contract-address <contractAddress:optional>"
       },
       {
         "name": "MINTER_ROLE",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC1155:MINTER_ROLE --contract-address <contractAddress:optional>"
       },
       {
         "name": "PAUSER_ROLE",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC1155:PAUSER_ROLE --contract-address <contractAddress:optional>"
       },
       {
         "name": "URI_SETTER_ROLE",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC1155:URI_SETTER_ROLE --contract-address <contractAddress:optional>"
       },
       {
@@ -36,6 +404,13 @@
             "type": "uint256"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC1155:balanceOf --contract-address <contractAddress:optional> --account <account> --id <id>"
       },
       {
@@ -49,6 +424,13 @@
           {
             "internalType": "uint256[]",
             "name": "ids",
+            "type": "uint256[]"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "uint256[]",
+            "name": "",
             "type": "uint256[]"
           }
         ],
@@ -73,6 +455,7 @@
             "type": "uint256"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC1155:burn --contract-address <contractAddress:optional> --account <account> --id <id> --value <value>"
       },
       {
@@ -94,6 +477,7 @@
             "type": "uint256[]"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC1155:burnBatch --contract-address <contractAddress:optional> --account <account> --ids <ids> --values <values>"
       },
       {
@@ -105,6 +489,13 @@
             "type": "uint256"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC1155:exists --contract-address <contractAddress:optional> --id <id>"
       },
       {
@@ -113,6 +504,13 @@
           {
             "internalType": "bytes32",
             "name": "role",
+            "type": "bytes32"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
             "type": "bytes32"
           }
         ],
@@ -132,6 +530,7 @@
             "type": "address"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC1155:grantRole --contract-address <contractAddress:optional> --role <role> --account <account>"
       },
       {
@@ -148,6 +547,13 @@
             "type": "address"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC1155:hasRole --contract-address <contractAddress:optional> --role <role> --account <account>"
       },
       {
@@ -162,6 +568,13 @@
             "internalType": "address",
             "name": "operator",
             "type": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
           }
         ],
         "cmd": "npx hardhat task-gen:MyERC1155:isApprovedForAll --contract-address <contractAddress:optional> --account <account> --operator <operator>"
@@ -190,6 +603,7 @@
             "type": "bytes"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC1155:mint --contract-address <contractAddress:optional> --account <account> --id <id> --amount <amount> --data <data>"
       },
       {
@@ -216,16 +630,25 @@
             "type": "bytes"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC1155:mintBatch --contract-address <contractAddress:optional> --to <to> --ids <ids> --amounts <amounts> --data <data>"
       },
       {
         "name": "pause",
         "params": [],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC1155:pause --contract-address <contractAddress:optional>"
       },
       {
         "name": "paused",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC1155:paused --contract-address <contractAddress:optional>"
       },
       {
@@ -242,6 +665,7 @@
             "type": "address"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC1155:renounceRole --contract-address <contractAddress:optional> --role <role> --caller-confirmation <callerConfirmation>"
       },
       {
@@ -258,6 +682,7 @@
             "type": "address"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC1155:revokeRole --contract-address <contractAddress:optional> --role <role> --account <account>"
       },
       {
@@ -289,6 +714,7 @@
             "type": "bytes"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC1155:safeBatchTransferFrom --contract-address <contractAddress:optional> --from <from> --to <to> --ids <ids> --values <values> --data <data>"
       },
       {
@@ -320,6 +746,7 @@
             "type": "bytes"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC1155:safeTransferFrom --contract-address <contractAddress:optional> --from <from> --to <to> --id <id> --value <value> --data <data>"
       },
       {
@@ -336,6 +763,7 @@
             "type": "bool"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC1155:setApprovalForAll --contract-address <contractAddress:optional> --operator <operator> --approved <approved>"
       },
       {
@@ -347,6 +775,7 @@
             "type": "string"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC1155:setURI --contract-address <contractAddress:optional> --newuri <newuri>"
       },
       {
@@ -358,11 +787,25 @@
             "type": "bytes4"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC1155:supportsInterface --contract-address <contractAddress:optional> --interface-id <interfaceId>"
       },
       {
         "name": "totalSupply",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC1155:totalSupply:1 --contract-address <contractAddress:optional>"
       },
       {
@@ -374,11 +817,19 @@
             "type": "uint256"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC1155:totalSupply:2 --contract-address <contractAddress:optional> --id <id>"
       },
       {
         "name": "unpause",
         "params": [],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC1155:unpause --contract-address <contractAddress:optional>"
       },
       {
@@ -388,6 +839,13 @@
             "internalType": "uint256",
             "name": "",
             "type": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
           }
         ],
         "cmd": "npx hardhat task-gen:MyERC1155:uri --contract-address <contractAddress:optional> --param1 <param1>"
@@ -400,21 +858,49 @@
       {
         "name": "DEFAULT_ADMIN_ROLE",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:DEFAULT_ADMIN_ROLE --contract-address <contractAddress:optional>"
       },
       {
         "name": "DOMAIN_SEPARATOR",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:DOMAIN_SEPARATOR --contract-address <contractAddress:optional>"
       },
       {
         "name": "MINTER_ROLE",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:MINTER_ROLE --contract-address <contractAddress:optional>"
       },
       {
         "name": "PAUSER_ROLE",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:PAUSER_ROLE --contract-address <contractAddress:optional>"
       },
       {
@@ -429,6 +915,13 @@
             "internalType": "address",
             "name": "spender",
             "type": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
           }
         ],
         "cmd": "npx hardhat task-gen:MyERC20:allowance --contract-address <contractAddress:optional> --owner <owner> --spender <spender>"
@@ -447,6 +940,13 @@
             "type": "uint256"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:approve --contract-address <contractAddress:optional> --spender <spender> --value <value>"
       },
       {
@@ -456,6 +956,13 @@
             "internalType": "address",
             "name": "account",
             "type": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
           }
         ],
         "cmd": "npx hardhat task-gen:MyERC20:balanceOf --contract-address <contractAddress:optional> --account <account>"
@@ -469,6 +976,7 @@
             "type": "uint256"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC20:burn --contract-address <contractAddress:optional> --value <value>"
       },
       {
@@ -485,16 +993,61 @@
             "type": "uint256"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC20:burnFrom --contract-address <contractAddress:optional> --account <account> --value <value>"
       },
       {
         "name": "decimals",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "uint8",
+            "name": "",
+            "type": "uint8"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:decimals --contract-address <contractAddress:optional>"
       },
       {
         "name": "eip712Domain",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bytes1",
+            "name": "fields",
+            "type": "bytes1"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "version",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "chainId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "verifyingContract",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "salt",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "extensions",
+            "type": "uint256[]"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:eip712Domain --contract-address <contractAddress:optional>"
       },
       {
@@ -503,6 +1056,13 @@
           {
             "internalType": "bytes32",
             "name": "role",
+            "type": "bytes32"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
             "type": "bytes32"
           }
         ],
@@ -522,6 +1082,7 @@
             "type": "address"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC20:grantRole --contract-address <contractAddress:optional> --role <role> --account <account>"
       },
       {
@@ -536,6 +1097,13 @@
             "internalType": "address",
             "name": "account",
             "type": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
           }
         ],
         "cmd": "npx hardhat task-gen:MyERC20:hasRole --contract-address <contractAddress:optional> --role <role> --account <account>"
@@ -554,11 +1122,19 @@
             "type": "uint256"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC20:mint --contract-address <contractAddress:optional> --to <to> --amount <amount>"
       },
       {
         "name": "name",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:name --contract-address <contractAddress:optional>"
       },
       {
@@ -570,16 +1146,31 @@
             "type": "address"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:nonces --contract-address <contractAddress:optional> --owner <owner>"
       },
       {
         "name": "pause",
         "params": [],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC20:pause --contract-address <contractAddress:optional>"
       },
       {
         "name": "paused",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:paused --contract-address <contractAddress:optional>"
       },
       {
@@ -621,6 +1212,7 @@
             "type": "bytes32"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC20:permit --contract-address <contractAddress:optional> --owner <owner> --spender <spender> --value <value> --deadline <deadline> --v <v> --r <r> --s <s>"
       },
       {
@@ -637,6 +1229,7 @@
             "type": "address"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC20:renounceRole --contract-address <contractAddress:optional> --role <role> --caller-confirmation <callerConfirmation>"
       },
       {
@@ -653,6 +1246,7 @@
             "type": "address"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC20:revokeRole --contract-address <contractAddress:optional> --role <role> --account <account>"
       },
       {
@@ -664,16 +1258,37 @@
             "type": "bytes4"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:supportsInterface --contract-address <contractAddress:optional> --interface-id <interfaceId>"
       },
       {
         "name": "symbol",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:symbol --contract-address <contractAddress:optional>"
       },
       {
         "name": "totalSupply",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:totalSupply --contract-address <contractAddress:optional>"
       },
       {
@@ -688,6 +1303,13 @@
             "internalType": "uint256",
             "name": "value",
             "type": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
           }
         ],
         "cmd": "npx hardhat task-gen:MyERC20:transfer --contract-address <contractAddress:optional> --to <to> --value <value>"
@@ -711,11 +1333,19 @@
             "type": "uint256"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC20:transferFrom --contract-address <contractAddress:optional> --from <from> --to <to> --value <value>"
       },
       {
         "name": "unpause",
         "params": [],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC20:unpause --contract-address <contractAddress:optional>"
       }
     ]
@@ -726,16 +1356,37 @@
       {
         "name": "DEFAULT_ADMIN_ROLE",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC721:DEFAULT_ADMIN_ROLE --contract-address <contractAddress:optional>"
       },
       {
         "name": "MINTER_ROLE",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC721:MINTER_ROLE --contract-address <contractAddress:optional>"
       },
       {
         "name": "PAUSER_ROLE",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC721:PAUSER_ROLE --contract-address <contractAddress:optional>"
       },
       {
@@ -752,6 +1403,7 @@
             "type": "uint256"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC721:approve --contract-address <contractAddress:optional> --to <to> --token-id <tokenId>"
       },
       {
@@ -761,6 +1413,13 @@
             "internalType": "address",
             "name": "owner",
             "type": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
           }
         ],
         "cmd": "npx hardhat task-gen:MyERC721:balanceOf --contract-address <contractAddress:optional> --owner <owner>"
@@ -774,6 +1433,7 @@
             "type": "uint256"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC721:burn --contract-address <contractAddress:optional> --token-id <tokenId>"
       },
       {
@@ -785,6 +1445,13 @@
             "type": "uint256"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC721:getApproved --contract-address <contractAddress:optional> --token-id <tokenId>"
       },
       {
@@ -793,6 +1460,13 @@
           {
             "internalType": "bytes32",
             "name": "role",
+            "type": "bytes32"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
             "type": "bytes32"
           }
         ],
@@ -812,6 +1486,7 @@
             "type": "address"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC721:grantRole --contract-address <contractAddress:optional> --role <role> --account <account>"
       },
       {
@@ -826,6 +1501,13 @@
             "internalType": "address",
             "name": "account",
             "type": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
           }
         ],
         "cmd": "npx hardhat task-gen:MyERC721:hasRole --contract-address <contractAddress:optional> --role <role> --account <account>"
@@ -844,11 +1526,25 @@
             "type": "address"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC721:isApprovedForAll --contract-address <contractAddress:optional> --owner <owner> --operator <operator>"
       },
       {
         "name": "name",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC721:name --contract-address <contractAddress:optional>"
       },
       {
@@ -860,16 +1556,31 @@
             "type": "uint256"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC721:ownerOf --contract-address <contractAddress:optional> --token-id <tokenId>"
       },
       {
         "name": "pause",
         "params": [],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC721:pause --contract-address <contractAddress:optional>"
       },
       {
         "name": "paused",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC721:paused --contract-address <contractAddress:optional>"
       },
       {
@@ -886,6 +1597,7 @@
             "type": "address"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC721:renounceRole --contract-address <contractAddress:optional> --role <role> --caller-confirmation <callerConfirmation>"
       },
       {
@@ -902,6 +1614,7 @@
             "type": "address"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC721:revokeRole --contract-address <contractAddress:optional> --role <role> --account <account>"
       },
       {
@@ -918,6 +1631,7 @@
             "type": "string"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC721:safeMint --contract-address <contractAddress:optional> --to <to> --uri <uri>"
       },
       {
@@ -939,6 +1653,7 @@
             "type": "uint256"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC721:safeTransferFrom:1 --contract-address <contractAddress:optional> --from <from> --to <to> --token-id <tokenId>"
       },
       {
@@ -965,6 +1680,7 @@
             "type": "bytes"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC721:safeTransferFrom:2 --contract-address <contractAddress:optional> --from <from> --to <to> --token-id <tokenId> --data <data>"
       },
       {
@@ -981,6 +1697,7 @@
             "type": "bool"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC721:setApprovalForAll --contract-address <contractAddress:optional> --operator <operator> --approved <approved>"
       },
       {
@@ -992,11 +1709,25 @@
             "type": "bytes4"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC721:supportsInterface --contract-address <contractAddress:optional> --interface-id <interfaceId>"
       },
       {
         "name": "symbol",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC721:symbol --contract-address <contractAddress:optional>"
       },
       {
@@ -1005,6 +1736,13 @@
           {
             "internalType": "uint256",
             "name": "index",
+            "type": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
             "type": "uint256"
           }
         ],
@@ -1024,6 +1762,13 @@
             "type": "uint256"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC721:tokenOfOwnerByIndex --contract-address <contractAddress:optional> --owner <owner> --index <index>"
       },
       {
@@ -1035,11 +1780,25 @@
             "type": "uint256"
           }
         ],
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC721:tokenURI --contract-address <contractAddress:optional> --token-id <tokenId>"
       },
       {
         "name": "totalSupply",
         "params": [],
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
         "cmd": "npx hardhat task-gen:MyERC721:totalSupply --contract-address <contractAddress:optional>"
       },
       {
@@ -1061,11 +1820,13 @@
             "type": "uint256"
           }
         ],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC721:transferFrom --contract-address <contractAddress:optional> --from <from> --to <to> --token-id <tokenId>"
       },
       {
         "name": "unpause",
         "params": [],
+        "outputs": [],
         "cmd": "npx hardhat task-gen:MyERC721:unpause --contract-address <contractAddress:optional>"
       }
     ]
