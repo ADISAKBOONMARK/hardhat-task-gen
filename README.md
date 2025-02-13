@@ -98,10 +98,10 @@ You can customize the task generation by modifying your Hardhat config:
 ```ts
 module.exports = {
   taskGen: {
-    outPath: "./tasks-generated", // Specify the output path for generated tasks (optional)
-    clear: true, // Clear existing tasks before generating new ones (optional)
-    runOnCompile: false, // Generate tasks automatically on each compile (optional)
-    prefix: "task-gen", // Set a custom task prefix (optional)
+    outPath: "./tasks-generated", // Specify the output path for generated tasks.
+    clear: true, // Clear existing artifacts before generating the tasks, and it will force-run compilation. 
+    runOnCompile: false, // Generate tasks automatically on each compile.
+    prefix: "task-gen", // Set a custom task prefix.
   },
 };
 ```
