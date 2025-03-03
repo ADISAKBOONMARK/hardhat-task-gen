@@ -19,3 +19,10 @@ export const setDefaultConfig = (
 export const convertToKebabCase = (str: string) => {
   return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 };
+
+export const convertToCamelCase = (str: string) => {
+  return str
+    .replace(/^_+|_+$/g, "") // Remove leading and trailing underscores
+    .replace(/[-_](.)/g, (_, char) => char.toUpperCase()) // Convert to camelCase
+    .replace(/^([A-Z])/, (match) => match.toLowerCase()); // Ensure first letter is lowercase
+};

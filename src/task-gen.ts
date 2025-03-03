@@ -8,7 +8,7 @@ import path from "path";
 import { OPTIONAL_PARAM, PARAM } from "./constants";
 import { TaskGenConfig } from "./interfaces";
 import "./type-extensions";
-import { convertToKebabCase } from "./utils";
+import { convertToCamelCase, convertToKebabCase } from "./utils";
 
 dotenv.config();
 
@@ -84,7 +84,7 @@ export const genTask = async function ({
 
             item.inputs.forEach((input: any, index: number) => {
               const paramName = input.name
-                ? input.name.replaceAll("_", "")
+                ? convertToCamelCase(input.name)
                 : `param${index + 1}`;
 
               newTask = newTask.addParam(
@@ -115,7 +115,7 @@ export const genTask = async function ({
                 const functionArgs = item.inputs.map(
                   (input: any, index: number) =>
                     taskArgs[
-                      input.name.replaceAll("_", "") || `param${index + 1}`
+                      convertToCamelCase(input.name) || `param${index + 1}`
                     ]
                 );
 
@@ -148,7 +148,7 @@ export const genTask = async function ({
             let taskCommand = `npx hardhat ${uniqueTaskName} --contract-address <contractAddress:optional>`;
             item.inputs.forEach((input: any, index: number) => {
               const inputName =
-                input.name.replaceAll("_", "") || `param${index + 1}`;
+                convertToCamelCase(input.name) || `param${index + 1}`;
               taskCommand += ` --${convertToKebabCase(
                 inputName
               )} <${inputName}>`;
