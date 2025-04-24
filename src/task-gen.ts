@@ -131,9 +131,23 @@ export const genTask = async function ({
                   functionArgs[index] = JSON.parse(functionArgs[index]);
                 }
 
-                const result = await contract[
-                  `${item.name}(${inputArgs.join()})`
-                ](...functionArgs, txOptions);
+                let result;
+                try {
+                  result = await contract[`${item.name}(${inputArgs.join()})`](
+                    ...functionArgs,
+                    txOptions
+                  );
+                } catch (err) {
+                  if (inputArgs.includes("tuple")) {
+                    result = await contract[`${item.name}`](
+                      ...functionArgs,
+                      txOptions
+                    );
+                  } else {
+                    throw err;
+                  }
+                }
+
                 console.log(
                   `✅ ${contractName}.${
                     item.name

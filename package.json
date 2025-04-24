@@ -1,6 +1,6 @@
 {
   "name": "@adisakboonmark/hardhat-task-gen",
-  "version": "0.1.8-beta",
+  "version": "0.1.9-beta",
   "description": "Create Tasks from ABI in Hardhat",
   "keywords": [
     "ethereum",
